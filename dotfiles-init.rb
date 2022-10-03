@@ -5,6 +5,11 @@ class DotfilesInit < Formula
   sha256 "c4c4b59653173f0fee70c741804cc787d78821471d5f9f23fa15d44060130119"
   license "MIT"
 
+  livecheck do
+    url :stable
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+  end
+
   def install
     include.install ".bash", ".sh", ".shell", ".zsh"
     include.install ".bash_logout", ".bash_profile", ".bashrc",
