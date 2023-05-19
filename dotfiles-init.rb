@@ -27,7 +27,7 @@ class DotfilesInit < Formula
       If you have any private functions you want to include in your shell
       add those links to ~/.secret_links (one link per line).
       When you run dotfiles-init all valid links will be curl'd and
-      appended to ~/.shell/login_secret 
+      appended to ~/.shell/login_secret
       (and it will be loaded automatically when you re-launch)
     EOS
   end
