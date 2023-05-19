@@ -1,0 +1,47 @@
+name: Bump formulae on schedule or request
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      formulae:
+        description: Custom list of formulae to livecheck and bump if outdated
+        required: false
+  schedule:
+    # Every day at 5am
+    - cron: "0 5 * * *"
+
+env:
+  HOMEBREW_FORCE_HOMEBREW_ON_LINUX: 1
+  FORMULAE: >
+    dotfiles-init
+
+permissions:
+  contents: read
+
+jobs:
+  autobump:
+    if: github.repository == 'akshob/homebrew-tools'
+    runs-on: ubuntu-22.04
+    container:
+      image: ghcr.io/homebrew/ubuntu22.04:master
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+        with:
+          test-bot: false
+
+      - name: Configure Git user
+        uses: Homebrew/actions/git-user-config@master
+        with:
+          username: ${{ (github.event_name == 'workflow_dispatch' && github.actor) || 'AutoBot' }}
+
+      - name: Bump formulae
+        uses: Homebrew/actions/bump-packages@master
+        continue-on-error: true
+        with:
+          token: ${{ secrets.HOMEBREW_TOOLS_REPO_WORKFLOW_TOKEN }}
+          formulae: ${{ github.event.inputs.formulae || env.FORMULAE }}
