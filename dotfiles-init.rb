@@ -1,8 +1,8 @@
 class DotfilesInit < Formula
   desc "Initialize shell startup files"
   homepage "https://github.com/akshob/dotfiles"
-  url "https://github.com/akshob/dotfiles/archive/refs/tags/v1.2.1.tar.gz"
-  sha256 "066e4daf409393c39f22b63f163432278a3095ce12bcdfb1c531d321c30eddb6"
+  url "https://github.com/akshob/dotfiles/archive/refs/tags/v1.3.0.tar.gz"
+  sha256 "b71be14481d9263d92692f6301bb0fb2f95edb7957627a65ff5d7d836ab791da"
   license "MIT"
 
   livecheck do
