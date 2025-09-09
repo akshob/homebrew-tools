@@ -34,16 +34,16 @@ class DotfilesInit < Formula
 
   test do
     system bin/"dotfiles-init"
-    assert_predicate testpath/".bash", :exist?
-    assert_predicate testpath/".sh", :exist?
-    assert_predicate testpath/".shell", :exist?
-    assert_predicate testpath/".zsh", :exist?
-    assert_predicate testpath/".bash_logout", :exist?
-    assert_predicate testpath/".bash_profile", :exist?
-    assert_predicate testpath/".bashrc", :exist?
-    assert_predicate testpath/".profile", :exist?
-    assert_predicate testpath/".zshenv", :exist?
-    assert_predicate testpath/".zprofile", :exist?
-    assert_predicate testpath/".zshrc", :exist?
+    assert_path_exists testpath/".bash"
+    assert_path_exists testpath/".sh"
+    assert_path_exists testpath/".shell"
+    assert_path_exists testpath/".zsh"
+    assert_path_exists testpath/".bash_logout"
+    assert_path_exists testpath/".bash_profile"
+    assert_path_exists testpath/".bashrc"
+    assert_path_exists testpath/".profile"
+    assert_path_exists testpath/".zshenv"
+    assert_path_exists testpath/".zprofile"
+    assert_path_exists testpath/".zshrc"
   end
 end
